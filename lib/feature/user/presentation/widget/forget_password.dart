@@ -14,7 +14,7 @@ class LoginForgetPassword extends StatelessWidget {
           onTap: onTap,
           child: const Text(
             "Forgot Password?",
-            style: TextStyle(color: Colors.green),
+            style: TextStyle(color: Colors.blue),
           ),
         ),
       ],

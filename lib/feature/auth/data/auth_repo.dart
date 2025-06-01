@@ -3,37 +3,48 @@ import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trackcore/core/failure/failures.dart';
 
+
 class AuthRepository {
   static const String _userEmailKey = 'user_email';
   static const String _isLoggedInKey = 'isLoggedIn';
+
+  static const String _defaultEmail = 'test@gmail.com';
+  static const String _defaultPassword = 'P@ss123';
+  static const String _defaultFirstName = 'Test';
+  static const String _defaultLastName = 'User';
+  static const String _defaultCell = '0831234567';
+  static const String _defaultUID = '1234567890123';
 
   Future<void> saveUserEmail(String email) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_userEmailKey, email);
     await prefs.setBool(_isLoggedInKey, true);
+
+    final userData = jsonEncode({
+      'firstName': _defaultFirstName,
+      'lastName': _defaultLastName,
+      'email': _defaultEmail,
+      'cellNumber': _defaultCell,
+      'idNumber': _defaultUID,
+    });
+    await prefs.setString('userData', userData);
   }
 
   Future<Map<String, String>?> loadUserData() async {
     try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String? userDataJson = prefs.getString('userData');
+      final prefs = await SharedPreferences.getInstance();
+      final userDataJson = prefs.getString('userData');
 
       if (userDataJson != null) {
         final userData = jsonDecode(userDataJson);
 
-        final username = '${userData['firstName']} ${userData['lastName']}';
-        final accountNumber = userData['email'];
-        final cellphone = userData['cellNumber'];
-        final id = userData['idNumber'];
-
         return {
-          'userName': username,
-          'accountNumber': accountNumber,
-          'cellNumber': cellphone,
-          'idNumber': id
+          'userName': '${userData['firstName']} ${userData['lastName']}',
+          'accountNumber': userData['email'],
+          'cellNumber': userData['cellNumber'],
+          'idNumber': userData['idNumber']
         };
       }
-
       return null;
     } catch (e) {
       print("Error loading user data: $e");
@@ -49,13 +60,7 @@ class AuthRepository {
   Future<Either<Failure, Unit>> logout() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.remove(_userEmailKey);
-      await prefs.remove(_isLoggedInKey);
-      await prefs.remove('accountId');
-      await prefs.remove('username');
-      await prefs.remove('surname');
-      await prefs.remove('cellNumber');
-
+      await prefs.clear();
       return right(unit);
     } catch (e) {
       return left(Failure(message: "$e"));
@@ -68,105 +73,14 @@ class AuthRepository {
   }
 
   String getUserAccount(String userName, String accountNumb) {
-    SharedPreferences.getInstance().then((prefs) {
-      final accountId = prefs.getString('accountId') ?? '';
-      if (accountId.isNotEmpty) {
-        return fetchUserDetails(accountId, userName, accountNumb);
-      } else {
-        print("error");
-      }
-    });
-    return "Unknown User";
-  }
-
-  Future<void> fetchUserDetails(
-      String accountId, String userName, String accountNumber) async {
-    try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String? userDataJson = prefs.getString('userData');
-
-      if (userDataJson != null) {
-        final userData = jsonDecode(userDataJson);
-
-        userName = '${userData['firstName']} ${userData['lastName']}';
-        accountNumber = userData['email'];
-      } else {
-        print("error");
-      }
-    } catch (e) {
-      print(e);
-    }
+    return '$_defaultFirstName $_defaultLastName';
   }
 
   Future<bool> loginUser(String email, String password) async {
-    try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final String? userDataJson = prefs.getString('userData');
-
-      if (userDataJson != null) {
-        final Map<String, dynamic> userData = jsonDecode(userDataJson);
-
-        if (userData['email'] == email && userData['password'] == password) {
-          await saveUserEmail(email); // Save email and set logged in state
-          await prefs.setString('accountId', userData['email']);
-          await prefs.setString('username', userData['firstName']);
-          await prefs.setString('surname', userData['lastName']);
-          return true;
-        }
-      }
-      return false;
-    } catch (e) {
-      print(e);
-      return false;
+    if (email == _defaultEmail && password == _defaultPassword) {
+      await saveUserEmail(email);
+      return true;
     }
-  }
-
-  Future<Either<Failure, Unit>> signup({
-    required String username,
-    required String lastname,
-    required String password,
-    required String email,
-    required String cellNumber,
-    required String selectedProvince,
-    required String sub,
-    required String city,
-    required String streetNum,
-    required String streetName,
-    required String idNum,
-    required String dob,
-  }) async {
-    try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-      final accountId = email;
-      await prefs.setBool(_isLoggedInKey, true);
-      await prefs.setString('accountId', accountId);
-      await prefs.setString('username', username);
-      await prefs.setString('surname', lastname);
-      await prefs.setString('cellNumber', cellNumber);
-      await prefs.setString('idNumber', cellNumber);
-      await prefs.setString(_userEmailKey, email);
-
-      final userData = {
-        'firstName': username,
-        'lastName': lastname,
-        'cellNumber':cellNumber,
-        'email': email,
-        'province': selectedProvince,
-        'suburb': sub,
-        'city': city,
-        'streetNumber': streetNum,
-        'streetName': streetName,
-        'idNumber': idNum,
-        'dateOfBirth': dob,
-        'password': password,
-      };
-
-      await prefs.setString('userData', jsonEncode(userData));
-
-      return right(unit);
-    } catch (e) {
-      return left(const Failure(message: 'error'));
-    }
+    return false;
   }
 }

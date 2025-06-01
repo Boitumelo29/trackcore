@@ -19,7 +19,7 @@ class LongButton extends StatelessWidget {
         width: 410,
         height: 55,
         decoration: BoxDecoration(
-            color: Colors.green, borderRadius: BorderRadius.circular(17)),
+            color: Colors.blue, borderRadius: BorderRadius.circular(17)),
         child: isLoading
             ? const Center(
                 child: SizedBox(

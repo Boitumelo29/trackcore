@@ -88,37 +88,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           await authRepository.logout();
           emit(state.copyWith(status: AuthStatus.authenticated));
         },
-        signUp: (e) async {
-          try {
-            final result = await authRepository.signup(
-              username: e.username,
-              lastname: e.lastname,
-              password: e.password,
-              email: e.email,
-              cellNumber: e.cellphone,
-              selectedProvince: e.selectedProvince,
-              sub: e.sub,
-              city: e.city,
-              streetNum: e.streetNum,
-              streetName: e.streetName,
-              idNum: e.idNum,
-              dob: e.dob,
-            );
-
-            result.fold(
-              (failure) => emit(state.copyWith(
-                status: AuthStatus.failure,
-                error: "",
-              )),
-              (_) => emit(state.copyWith(status: AuthStatus.authenticated)),
-            );
-          } catch (e) {
-            emit(state.copyWith(
-              status: AuthStatus.failure,
-              error: e.toString(),
-            ));
-          }
-        },
       );
     });
   }

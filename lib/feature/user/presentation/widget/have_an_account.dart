@@ -18,7 +18,7 @@ class DontHaveAnAccount extends StatelessWidget {
           ),
           Text(
             "signup",
-            style: TextStyle(color: Colors.green),
+            style: TextStyle(color: Colors.blue),
           ),
         ],
       ),

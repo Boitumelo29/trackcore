@@ -4,12 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trackcore/common_widgets/screens/user_layout/user_layout_screen.dart';
 import 'package:trackcore/common_widgets/sized_box/sized_space.dart';
 import 'package:trackcore/common_widgets/widgets/buttons/long_button.dart';
+import 'package:trackcore/core/routes/router.dart';
 import 'package:trackcore/feature/auth/data/auth_repo.dart';
 import 'package:trackcore/feature/user/bloc/login_bloc.dart';
 import 'package:trackcore/feature/user/presentation/widget/email.dart';
 import 'package:trackcore/feature/user/presentation/widget/ewealth_text.dart';
-import 'package:trackcore/feature/user/presentation/widget/have_an_account.dart';
-import 'package:trackcore/feature/user/presentation/widget/logo_image.dart';
 import 'package:trackcore/feature/user/presentation/widget/my_ewealth_sub_text.dart';
 import 'package:trackcore/feature/user/presentation/widget/password.dart';
 import 'package:trackcore/utils/strings/strings.dart';
@@ -102,7 +101,7 @@ class _LoginViewState extends State<LoginView> {
 
   void _listener(BuildContext context, LoginState state) {
     if (state.status == LoginStatus.success) {
-      // context.router.push(const MainHomeRoute());
+       context.router.push(const HomeRoute());
     } else if (state.status == LoginStatus.failure) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

@@ -54,7 +54,7 @@ class AppBarScreen extends StatelessWidget {
       ),
       floatingActionButton: shouldHaveFloatingButton
           ? FloatingActionButton(
-              backgroundColor: Colors.green,
+              backgroundColor: Colors.blue,
               onPressed: floatingActionButton,
               tooltip: tooltip,
               child: Icon(icon),

@@ -7,7 +7,7 @@ class EWealthText extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Text(
       "eWealth",
-      style: TextStyle(color: Colors.green, fontSize: 40, fontWeight: FontWeight.w600),
+      style: TextStyle(color: Colors.blue, fontSize: 40, fontWeight: FontWeight.w600),
     );
   }
 }

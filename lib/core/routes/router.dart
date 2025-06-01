@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:trackcore/feature/auth/auth.dart';
+import 'package:trackcore/feature/home/presentation/page/home_page.dart';
 import 'package:trackcore/feature/user/presentation/pages/login_page.dart';
 
 
@@ -15,5 +15,6 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: MyMainAuthRoute.page, initial: true),
         AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: HomeRoute.page),
       ];
 }
