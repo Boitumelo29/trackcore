@@ -54,7 +54,7 @@ class _LoginViewState extends State<LoginView> {
         return UserLayoutScreen(
           children: [
             const TrackCoreText(),
-            const EWealthSubText(),
+            const TrackCoreSubText(),
             const SizedSpace(
               height: 60,
             ),
