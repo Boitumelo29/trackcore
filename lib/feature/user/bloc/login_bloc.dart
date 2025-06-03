@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             await authRepository.loginUser(event.email, event.password);
         if (success) {
           emit(state.copyWith(status: LoginStatus.success));
-          print("we good");
+          // print("we good");
         } else {
           emit(state.copyWith(
               status: LoginStatus.failure, error: "Invalid email or password"));
