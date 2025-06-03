@@ -47,7 +47,7 @@ class AuthRepository {
       }
       return null;
     } catch (e) {
-      print("Error loading user data: $e");
+      // print("Error loading user data: $e");
       return null;
     }
   }

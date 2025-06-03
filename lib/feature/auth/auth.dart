@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trackcore/feature/auth/bloc/auth_bloc.dart';
 import 'package:trackcore/feature/auth/data/auth_repo.dart';
 import 'package:trackcore/feature/home/bloc/home_bloc.dart';
+import 'package:trackcore/feature/home/data/repo/trip_repository_impl.dart';
 import 'package:trackcore/feature/home/presentation/page/home_page.dart';
 import 'package:trackcore/feature/user/bloc/login_bloc.dart';
 import 'package:trackcore/feature/user/presentation/pages/login_page.dart';
@@ -21,7 +22,7 @@ class MyMainAuthPage extends StatelessWidget {
             ..add(const CheckAuthStatus()),
         ),
         BlocProvider<HomeBloc>(
-          create: (context) => HomeBloc(),
+          create: (context) => HomeBloc(tripRepository: TripRepositoryImpl()),
         ),
       ],
       child: BlocBuilder<AuthBloc, AuthState>(
