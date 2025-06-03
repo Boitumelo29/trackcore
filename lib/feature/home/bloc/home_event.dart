@@ -4,4 +4,5 @@ part of 'home_bloc.dart';
 class HomeEvent with _$HomeEvent {
   const factory HomeEvent.started() = _Started;
   const factory HomeEvent.fetchTrips() = FetchTrips;
+  const factory HomeEvent.tripNotes({required String note, required String ID}) = TripNotes;
 }

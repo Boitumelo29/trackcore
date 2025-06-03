@@ -11,7 +11,6 @@ part 'home_state.dart';
 
 part 'home_bloc.freezed.dart';
 
-
 ///in my homebloc I load all of the trips
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final TripRepository tripRepository;
