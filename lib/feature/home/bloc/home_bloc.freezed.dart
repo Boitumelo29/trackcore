@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() fetchTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? fetchTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? fetchTrips,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(FetchTrips value) fetchTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(FetchTrips value)? fetchTrips,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(FetchTrips value)? fetchTrips,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +118,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() fetchTrips,
   }) {
     return started();
   }
@@ -120,6 +127,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? fetchTrips,
   }) {
     return started?.call();
   }
@@ -128,6 +136,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? fetchTrips,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -140,6 +149,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(FetchTrips value) fetchTrips,
   }) {
     return started(this);
   }
@@ -148,6 +158,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(FetchTrips value)? fetchTrips,
   }) {
     return started?.call(this);
   }
@@ -156,6 +167,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(FetchTrips value)? fetchTrips,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -170,7 +182,116 @@ abstract class _Started implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchTripsImplCopyWith<$Res> {
+  factory _$$FetchTripsImplCopyWith(
+          _$FetchTripsImpl value, $Res Function(_$FetchTripsImpl) then) =
+      __$$FetchTripsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchTripsImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$FetchTripsImpl>
+    implements _$$FetchTripsImplCopyWith<$Res> {
+  __$$FetchTripsImplCopyWithImpl(
+      _$FetchTripsImpl _value, $Res Function(_$FetchTripsImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$FetchTripsImpl implements FetchTrips {
+  const _$FetchTripsImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.fetchTrips()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchTripsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() fetchTrips,
+  }) {
+    return fetchTrips();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? fetchTrips,
+  }) {
+    return fetchTrips?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? fetchTrips,
+    required TResult orElse(),
+  }) {
+    if (fetchTrips != null) {
+      return fetchTrips();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(FetchTrips value) fetchTrips,
+  }) {
+    return fetchTrips(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(FetchTrips value)? fetchTrips,
+  }) {
+    return fetchTrips?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(FetchTrips value)? fetchTrips,
+    required TResult orElse(),
+  }) {
+    if (fetchTrips != null) {
+      return fetchTrips(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchTrips implements HomeEvent {
+  const factory FetchTrips() = _$FetchTripsImpl;
+}
+
+/// @nodoc
 mixin _$HomeState {
+  List<TripEntity> get trips => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Option<Either<Failure, Unit>> get tripFailureOrSuccess =>
+      throw _privateConstructorUsedError;
   dynamic get userName => throw _privateConstructorUsedError;
   Option<Either<Failure, Unit>> get logoutFailureFailureOrUnit =>
       throw _privateConstructorUsedError;
@@ -188,7 +309,10 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {dynamic userName,
+      {List<TripEntity> trips,
+      bool isLoading,
+      Option<Either<Failure, Unit>> tripFailureOrSuccess,
+      dynamic userName,
       Option<Either<Failure, Unit>> logoutFailureFailureOrUnit});
 }
 
@@ -207,10 +331,25 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? trips = null,
+    Object? isLoading = null,
+    Object? tripFailureOrSuccess = null,
     Object? userName = freezed,
     Object? logoutFailureFailureOrUnit = null,
   }) {
     return _then(_value.copyWith(
+      trips: null == trips
+          ? _value.trips
+          : trips // ignore: cast_nullable_to_non_nullable
+              as List<TripEntity>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tripFailureOrSuccess: null == tripFailureOrSuccess
+          ? _value.tripFailureOrSuccess
+          : tripFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<Failure, Unit>>,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -232,7 +371,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic userName,
+      {List<TripEntity> trips,
+      bool isLoading,
+      Option<Either<Failure, Unit>> tripFailureOrSuccess,
+      dynamic userName,
       Option<Either<Failure, Unit>> logoutFailureFailureOrUnit});
 }
 
@@ -249,10 +391,25 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? trips = null,
+    Object? isLoading = null,
+    Object? tripFailureOrSuccess = null,
     Object? userName = freezed,
     Object? logoutFailureFailureOrUnit = null,
   }) {
     return _then(_$HomeStateImpl(
+      trips: null == trips
+          ? _value._trips
+          : trips // ignore: cast_nullable_to_non_nullable
+              as List<TripEntity>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tripFailureOrSuccess: null == tripFailureOrSuccess
+          ? _value.tripFailureOrSuccess
+          : tripFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<Failure, Unit>>,
       userName: freezed == userName ? _value.userName! : userName,
       logoutFailureFailureOrUnit: null == logoutFailureFailureOrUnit
           ? _value.logoutFailureFailureOrUnit
@@ -266,8 +423,28 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 
 class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
-      {this.userName = "", this.logoutFailureFailureOrUnit = const None()});
+      {final List<TripEntity> trips = const [],
+      this.isLoading = false,
+      this.tripFailureOrSuccess = const None(),
+      this.userName = "unknown",
+      this.logoutFailureFailureOrUnit = const None()})
+      : _trips = trips;
 
+  final List<TripEntity> _trips;
+  @override
+  @JsonKey()
+  List<TripEntity> get trips {
+    if (_trips is EqualUnmodifiableListView) return _trips;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trips);
+  }
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final Option<Either<Failure, Unit>> tripFailureOrSuccess;
   @override
   @JsonKey()
   final dynamic userName;
@@ -277,7 +454,7 @@ class _$HomeStateImpl implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeState(userName: $userName, logoutFailureFailureOrUnit: $logoutFailureFailureOrUnit)';
+    return 'HomeState(trips: $trips, isLoading: $isLoading, tripFailureOrSuccess: $tripFailureOrSuccess, userName: $userName, logoutFailureFailureOrUnit: $logoutFailureFailureOrUnit)';
   }
 
   @override
@@ -285,6 +462,11 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
+            const DeepCollectionEquality().equals(other._trips, _trips) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.tripFailureOrSuccess, tripFailureOrSuccess) ||
+                other.tripFailureOrSuccess == tripFailureOrSuccess) &&
             const DeepCollectionEquality().equals(other.userName, userName) &&
             (identical(other.logoutFailureFailureOrUnit,
                     logoutFailureFailureOrUnit) ||
@@ -295,6 +477,9 @@ class _$HomeStateImpl implements _HomeState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(_trips),
+      isLoading,
+      tripFailureOrSuccess,
       const DeepCollectionEquality().hash(userName),
       logoutFailureFailureOrUnit);
 
@@ -309,10 +494,19 @@ class _$HomeStateImpl implements _HomeState {
 
 abstract class _HomeState implements HomeState {
   const factory _HomeState(
-          {final dynamic userName,
+          {final List<TripEntity> trips,
+          final bool isLoading,
+          final Option<Either<Failure, Unit>> tripFailureOrSuccess,
+          final dynamic userName,
           final Option<Either<Failure, Unit>> logoutFailureFailureOrUnit}) =
       _$HomeStateImpl;
 
+  @override
+  List<TripEntity> get trips;
+  @override
+  bool get isLoading;
+  @override
+  Option<Either<Failure, Unit>> get tripFailureOrSuccess;
   @override
   dynamic get userName;
   @override
