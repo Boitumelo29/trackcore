@@ -6,8 +6,9 @@ class EWealthSubText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Transfers made simple.",
-      style: TextStyle(color: Colors.grey[800], fontSize: 20, fontWeight: FontWeight.w300),
+      "Tracking at its best.",
+      style: TextStyle(
+          color: Colors.grey[800], fontSize: 20, fontWeight: FontWeight.w300),
     );
   }
 }

@@ -9,7 +9,7 @@ import 'package:trackcore/feature/auth/data/auth_repo.dart';
 import 'package:trackcore/feature/user/bloc/login_bloc.dart';
 import 'package:trackcore/feature/user/presentation/widget/email.dart';
 import 'package:trackcore/feature/user/presentation/widget/trackcore_text.dart';
-import 'package:trackcore/feature/user/presentation/widget/my_ewealth_sub_text.dart';
+import 'package:trackcore/feature/user/presentation/widget/track_core_sub_text.dart';
 import 'package:trackcore/feature/user/presentation/widget/password.dart';
 import 'package:trackcore/utils/strings/strings.dart';
 
