@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EWealthSubText extends StatelessWidget {
-  const EWealthSubText({super.key});
+class TrackCoreSubText extends StatelessWidget {
+  const TrackCoreSubText({super.key});
 
   @override
   Widget build(BuildContext context) {
