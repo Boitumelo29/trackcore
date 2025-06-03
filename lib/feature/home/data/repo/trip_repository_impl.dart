@@ -19,4 +19,18 @@ class TripRepositoryImpl implements TripRepository {
       return Left(Failure(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, TripNotesResponseModel>> setTripNotes(
+      {required String ID, required String note}) async {
+    try {
+      final tripNotes = await _dataSource.tripNotes(ID: ID, note: note);
+
+      print(tripNotes);
+      return tripNotes;
+    } catch (e) {
+      print(e);
+      return Left(Failure(message: e.toString()));
+    }
+  }
 }

@@ -15,3 +15,10 @@ class TripEntity {
     required this.distance,
   });
 }
+
+class TripNotesResponseModel {
+  final String ID;
+  final String note;
+
+  const TripNotesResponseModel({required this.ID, required this.note});
+}
